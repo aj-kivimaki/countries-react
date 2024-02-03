@@ -4,6 +4,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Row from "react-bootstrap/Row";
 import { Link } from "react-router-dom";
+import Search from "./Search";
 
 const Header = () => {
   return (
@@ -25,6 +26,7 @@ const Header = () => {
                 </Link>
               </Nav>
             </Navbar.Collapse>
+            <Search />
           </Container>
         </Navbar>
       </Row>

@@ -14,12 +14,17 @@ import { addFavourite } from "../store/favouritesSlice";
 const Countries = () => {
   const dispatch = useDispatch();
 
-  const countriesList = useSelector((state) => state.countries.countries);
+  const countries = useSelector((state) => state.countries.countries);
+  const searchTerm = useSelector((state) => state.searchTerm.searchTerm);
   const loading = useSelector((state) => state.countries.isLoading);
 
   useEffect(() => {
     dispatch(initializeCountries());
   }, [dispatch]);
+
+  const filteredCountries = countries.filter((country) =>
+    country.name.common.toLowerCase().startsWith(searchTerm.toLowerCase())
+  );
 
   if (loading) {
     return (
@@ -39,7 +44,7 @@ const Countries = () => {
   return (
     <Container fluid>
       <Row xs={2} md={3} lg={4} className=" g-3">
-        {countriesList.map((country) => (
+        {filteredCountries.map((country) => (
           <Col key={country.name.official} className="mt-5">
             <Card className="h-100">
               <FavoriteIcon
