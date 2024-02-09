@@ -1,4 +1,7 @@
 import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { initializeCountries } from "../store/countriesSlice";
+import { addFavourite } from "../store/favouritesSlice";
 
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { Spinner } from "react-bootstrap";
@@ -7,23 +10,21 @@ import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import ListGroup from "react-bootstrap/ListGroup";
 import Row from "react-bootstrap/Row";
-import { useDispatch, useSelector } from "react-redux";
-import { initializeCountries } from "../store/countriesSlice";
-import { addFavourite } from "../store/favouritesSlice";
+import { Link } from "react-router-dom";
 
 const Countries = () => {
   const dispatch = useDispatch();
 
   const countries = useSelector((state) => state.countries.countries);
-  const searchTerm = useSelector((state) => state.searchTerm.searchTerm);
   const loading = useSelector((state) => state.countries.isLoading);
+  const searchTerm = useSelector((state) => state.searchTerm.searchTerm);
 
   useEffect(() => {
     dispatch(initializeCountries());
   }, [dispatch]);
 
   const filteredCountries = countries.filter((country) =>
-    country.name.common.toLowerCase().startsWith(searchTerm.toLowerCase())
+    country.name.common.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   if (loading) {
@@ -51,16 +52,18 @@ const Countries = () => {
                 color="red"
                 onClick={() => dispatch(addFavourite(country))}
               />
-              <Card.Img
-                variant="top"
-                className="rounded h-50"
-                src={country.flags.svg}
-                style={{
-                  objectFit: "cover",
-                  minHeight: "200px",
-                  maxHeight: "200px",
-                }}
-              />
+              <Link to={`/countries/${country.name.common}`}>
+                <Card.Img
+                  variant="top"
+                  className="rounded h-50"
+                  src={country.flags.svg}
+                  style={{
+                    objectFit: "cover",
+                    minHeight: "200px",
+                    maxHeight: "200px",
+                  }}
+                />
+              </Link>
               <Card.Body className="d-flex flex-column">
                 <Card.Title>{country.name.common}</Card.Title>
                 <Card.Subtitle className="mb-5 text-muted">

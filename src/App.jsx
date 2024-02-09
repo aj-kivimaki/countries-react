@@ -1,9 +1,13 @@
+import { Provider } from "react-redux";
+
+/* UI libaries */
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Provider } from "react-redux";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
+/* routes */
 import Countries from "./routes/Countries";
 import CountriesSingle from "./routes/CountriesSingle";
 import Favourites from "./routes/Favourites";
