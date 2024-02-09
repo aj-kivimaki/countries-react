@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { initializeCountries } from "../store/countriesSlice";
 import { addFavourite } from "../store/favouritesSlice";
@@ -7,10 +8,9 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import { Spinner } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
-import Container from "react-bootstrap/Container";
 import ListGroup from "react-bootstrap/ListGroup";
 import Row from "react-bootstrap/Row";
-import { Link } from "react-router-dom";
+import Container from "react-bootstrap/Container";
 
 const Countries = () => {
   const dispatch = useDispatch();
@@ -48,10 +48,7 @@ const Countries = () => {
         {filteredCountries.map((country) => (
           <Col key={country.name.official} className="mt-5">
             <Card className="h-100">
-              <FavoriteIcon
-                color="red"
-                onClick={() => dispatch(addFavourite(country))}
-              />
+              <FavoriteIcon onClick={() => dispatch(addFavourite(country))} />
               <Link to={`/countries/${country.name.common}`}>
                 <Card.Img
                   variant="top"
