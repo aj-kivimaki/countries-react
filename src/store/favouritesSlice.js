@@ -15,7 +15,7 @@ export const favouritesSlice = createSlice({
         return;
       state.favourites = [...state.favourites, action.payload];
     },
-    clearFavourites(state, action) {
+    clearFavourites(state) {
       state.favourites = [];
     },
   },

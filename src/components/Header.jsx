@@ -5,6 +5,7 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Row from "react-bootstrap/Row";
+import { logout } from "../auth/firebase";
 
 const Header = () => {
   return (
@@ -24,9 +25,13 @@ const Header = () => {
                 <Link to="/favourites">
                   <Button variant="contained">Favourites</Button>
                 </Link>
+                <Link to="/register">
+                  <Button variant="contained">Register</Button>
+                </Link>
               </Nav>
             </Navbar.Collapse>
             <Search />
+            <Button onClick={logout}>Logout</Button>
           </Container>
         </Navbar>
       </Row>

@@ -22,3 +22,25 @@
   cursor: pointer;
   z-index: 100;
 }
+
+.register {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+}
+
+.register input,
+.register button {
+  margin-bottom: 10px;
+  padding: 6px 5px;
+  border-radius: 4px;
+  border: none;
+  background-color: #9bcbff;
+  color: white;
+  width: 200px;
+}
+
+.register button {
+  cursor: pointer;
+  background-color: #333;
+}

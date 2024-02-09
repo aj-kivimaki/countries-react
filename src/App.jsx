@@ -14,6 +14,7 @@ import Favourites from "./routes/Favourites";
 import Home from "./routes/Home";
 import Root from "./routes/Root";
 import store from "./store/store";
+import Register from "./routes/Register";
 
 const theme = createTheme({
   palette: {
@@ -47,6 +48,10 @@ function App() {
         {
           path: "/favourites",
           element: <Favourites />,
+        },
+        {
+          path: "/register",
+          element: <Register />,
         },
       ],
     },
