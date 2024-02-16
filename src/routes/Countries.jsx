@@ -49,7 +49,7 @@ const Countries = () => {
           <Col key={country.name.official} className="mt-5">
             <Card className="h-100">
               <FavoriteIcon onClick={() => dispatch(addFavourite(country))} />
-              <Link to={`/countries/${country.name.common}`}>
+              <Link to={`/countries/${country.name.common}`} state={country}>
                 <Card.Img
                   variant="top"
                   className="rounded h-50"

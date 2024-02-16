@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Search from "./Search";
 import { Button } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
@@ -8,6 +8,8 @@ import Row from "react-bootstrap/Row";
 import { logout } from "../auth/firebase";
 
 const Header = () => {
+  const navigate = useNavigate();
+
   return (
     <Container fluid>
       <Row>
@@ -28,10 +30,20 @@ const Header = () => {
                 <Link to="/register">
                   <Button variant="contained">Register</Button>
                 </Link>
+                <Link to="/login">
+                  <Button variant="contained">Login</Button>
+                </Link>
+                <Button
+                  onClick={() => {
+                    logout();
+                    navigate("/");
+                  }}
+                >
+                  Logout
+                </Button>
               </Nav>
             </Navbar.Collapse>
             <Search />
-            <Button onClick={logout}>Logout</Button>
           </Container>
         </Navbar>
       </Row>

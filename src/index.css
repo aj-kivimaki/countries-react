@@ -23,14 +23,18 @@
   z-index: 100;
 }
 
-.register {
+.register,
+.login {
   display: flex;
   flex-direction: column;
   padding: 30px;
 }
 
 .register input,
-.register button {
+.register button,
+.login input,
+.login button,
+.countries-single button {
   margin-bottom: 10px;
   padding: 6px 5px;
   border-radius: 4px;
@@ -40,7 +44,8 @@
   width: 200px;
 }
 
-.register button {
+.register button,
+.login button {
   cursor: pointer;
   background-color: #333;
 }

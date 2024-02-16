@@ -15,6 +15,7 @@ import Home from "./routes/Home";
 import Root from "./routes/Root";
 import store from "./store/store";
 import Register from "./routes/Register";
+import Login from "./routes/Login";
 
 const theme = createTheme({
   palette: {
@@ -52,6 +53,10 @@ function App() {
         {
           path: "/register",
           element: <Register />,
+        },
+        {
+          path: "/login",
+          element: <Login />,
         },
       ],
     },
