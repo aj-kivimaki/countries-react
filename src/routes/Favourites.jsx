@@ -8,7 +8,7 @@ import Container from "react-bootstrap/Container";
 import ListGroup from "react-bootstrap/ListGroup";
 import Row from "react-bootstrap/Row";
 import { Button } from "react-bootstrap";
-import { removeFavourite } from "../store/favouritesSlice";
+import { clearFavourites, removeFavourite } from "../store/favouritesSlice";
 
 const Favourites = () => {
   const dispatch = useDispatch();
@@ -21,6 +21,9 @@ const Favourites = () => {
 
   return (
     <Container fluid>
+      <Button onClick={() => dispatch(clearFavourites())}>
+        Remove all favourites
+      </Button>
       <Row xs={2} md={3} lg={4} className=" g-3">
         {favourites.map((country) => (
           <Col key={country.name.official} className="mt-5">
