@@ -6,9 +6,12 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Row from "react-bootstrap/Row";
 import { logout } from "../auth/firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../auth/firebase";
 
 const Header = () => {
   const navigate = useNavigate();
+  const [user, loading, error] = useAuthState(auth);
 
   return (
     <Container fluid>
@@ -27,20 +30,27 @@ const Header = () => {
                 <Link to="/favourites">
                   <Button variant="contained">Favourites</Button>
                 </Link>
-                <Link to="/register">
-                  <Button variant="contained">Register</Button>
-                </Link>
-                <Link to="/login">
-                  <Button variant="contained">Login</Button>
-                </Link>
-                <Button
-                  onClick={() => {
-                    logout();
-                    navigate("/");
-                  }}
-                >
-                  Logout
-                </Button>
+                {!user && (
+                  <Link to="/login">
+                    <Button variant="contained">Login</Button>
+                  </Link>
+                )}
+                {!user && (
+                  <Link to="/register">
+                    <Button variant="contained">Register</Button>
+                  </Link>
+                )}
+                {user && (
+                  <Button
+                    variant="contained"
+                    onClick={() => {
+                      logout();
+                      navigate("/");
+                    }}
+                  >
+                    Logout
+                  </Button>
+                )}
               </Nav>
             </Navbar.Collapse>
             <Search />

@@ -16,6 +16,7 @@ import Root from "./routes/Root";
 import store from "./store/store";
 import Register from "./routes/Register";
 import Login from "./routes/Login";
+import ProtectedRoute from "./auth/ProtectedRoute";
 
 const theme = createTheme({
   palette: {
@@ -39,23 +40,23 @@ function App() {
           element: <Home />,
         },
         {
-          path: "/countries",
-          element: <Countries />,
+          path: "countries",
+          element: <ProtectedRoute component={<Countries />} />,
         },
         {
           path: "countries/:single",
-          element: <CountriesSingle />,
+          element: <ProtectedRoute component={<CountriesSingle />} />,
         },
         {
-          path: "/favourites",
-          element: <Favourites />,
+          path: "favourites",
+          element: <ProtectedRoute component={<Favourites />} />,
         },
         {
-          path: "/register",
+          path: "register",
           element: <Register />,
         },
         {
-          path: "/login",
+          path: "login",
           element: <Login />,
         },
       ],
