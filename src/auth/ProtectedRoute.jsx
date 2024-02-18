@@ -3,7 +3,7 @@ import { Navigate } from "react-router-dom";
 import { auth } from "../auth/firebase";
 
 const ProtectedRoute = ({ component }) => {
-  const [user, loading, error] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth);
 
   if (loading) <div>Loading...</div>;
 

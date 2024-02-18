@@ -7,13 +7,14 @@ import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import ListGroup from "react-bootstrap/ListGroup";
 import Row from "react-bootstrap/Row";
+import { Button } from "react-bootstrap";
+import { removeFavourite } from "../store/favouritesSlice";
 
 const Favourites = () => {
   const dispatch = useDispatch();
 
   const favourites = useSelector((state) => state.favourites.favourites);
 
-  // TODO: Implement logic to retrieve favourites later.
   useEffect(() => {
     dispatch(initializeCountries());
   }, [dispatch]);
@@ -59,6 +60,11 @@ const Favourites = () => {
                 </ListGroup>
               </Card.Body>
             </Card>
+            <Col>
+              <Button onClick={() => dispatch(removeFavourite(country))}>
+                Remove from favourites
+              </Button>
+            </Col>
           </Col>
         ))}
       </Row>

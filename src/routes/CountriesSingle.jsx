@@ -4,6 +4,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 import { Button, Container, Image, Col, Spinner, Row } from "react-bootstrap";
 
+const WEATHER_API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
+
 const CountriesSingle = () => {
   const [weather, setWeather] = useState("");
   const [error, setError] = useState(false);
@@ -13,11 +15,8 @@ const CountriesSingle = () => {
   const location = useLocation();
 
   const country = location.state;
-
   const countryName = country.name.common;
   const capital = country.capital[0];
-
-  const WEATHER_API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
 
   useEffect(() => {
     axios
@@ -33,7 +32,7 @@ const CountriesSingle = () => {
         setLoading(false);
         setError(false);
       });
-  }, [capital, WEATHER_API_KEY]);
+  }, [capital]);
 
   if (loading) {
     return (

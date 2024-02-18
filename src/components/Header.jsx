@@ -11,7 +11,7 @@ import { auth } from "../auth/firebase";
 
 const Header = () => {
   const navigate = useNavigate();
-  const [user, loading, error] = useAuthState(auth);
+  const [user] = useAuthState(auth);
 
   return (
     <Container fluid>
