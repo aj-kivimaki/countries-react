@@ -49,8 +49,6 @@ const CountriesSingle = () => {
     );
   }
 
-  console.log(weather);
-
   return (
     <Container className="countries-single">
       <div className="card">

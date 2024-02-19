@@ -6,13 +6,12 @@ import { useNavigate } from "react-router-dom";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [user, loading /* , error */] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth);
 
   const navigate = useNavigate();
 
   useEffect(() => {
     if (loading) return;
-    if (user) console.log("user", user);
     if (user) navigate("/countries");
   }, [user, loading, navigate]);
 
