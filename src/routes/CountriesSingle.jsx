@@ -50,14 +50,14 @@ const CountriesSingle = () => {
   }
 
   return (
-    <Container className="countries-single">
+    <Container className="countries-single p-4">
       <div className="card">
-        <div className="info">
-          <h2>{countryName}</h2>
-          <h3>{capital}</h3>
+        <Container className="info" p={4}>
+          <h2 className="display-3">{countryName}</h2>
+          <h3 className="display-6">{capital}</h3>
           {!error && weather && (
-            <div>
-              <p>
+            <Container p={4}>
+              <p className="lead">
                 Right now it is <strong>{weather.main.temp.toFixed(1)}</strong>{" "}
                 degrees in {capital} and {weather.weather[0].description}.
               </p>
@@ -65,15 +65,18 @@ const CountriesSingle = () => {
                 src={`http://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
                 alt={weather.weather[0].icon}
               />
-            </div>
+            </Container>
           )}
-        </div>
+        </Container>
       </div>
       <Row>
         <Col>
-          <Button onClick={() => navigate("/countries")}>
+          <button
+            className="btn btn-warning mt-4"
+            onClick={() => navigate("/countries")}
+          >
             Back to Countries
-          </Button>
+          </button>
         </Col>
       </Row>
     </Container>

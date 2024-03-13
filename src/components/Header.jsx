@@ -11,9 +11,6 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Row from "react-bootstrap/Row";
 
-// mui
-import { Typography } from "@mui/material";
-
 // firebase
 import { db, auth, logout } from "../auth/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -37,33 +34,34 @@ const Header = () => {
   return (
     <Container fluid>
       <Row>
-        <Navbar bg="light" variant="light">
+        <Navbar className="bg-warning">
           <Container className="justify-content-end">
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
-              <Nav>
-                <Link to="/">
-                  <Button variant="contained">Home</Button>
+              <Nav className="btn-group">
+                <Link className="btn btn-outline-dark" to="/">
+                  Home
                 </Link>
-                <Link to="/countries">
-                  <Button variant="contained">Countries</Button>
+                <Link className="btn btn-outline-dark" to="/countries">
+                  Countries
                 </Link>
-                <Link to="/favourites">
-                  <Button variant="contained">Favourites</Button>
+                <Link className="btn btn-outline-dark" to="/favourites">
+                  Favourites
                 </Link>
                 {!user && (
-                  <Link to="/login">
-                    <Button variant="contained">Login</Button>
+                  <Link className="btn btn-outline-dark" to="/login">
+                    Login
                   </Link>
                 )}
                 {!user && (
-                  <Link to="/register">
-                    <Button variant="contained">Register</Button>
+                  <Link className="btn btn-outline-dark" to="/register">
+                    Register
                   </Link>
                 )}
                 {user && (
-                  <Button
+                  <button
                     variant="contained"
+                    className="btn btn-outline-dark"
                     onClick={() => {
                       logout();
                       setUserName("");
@@ -71,16 +69,16 @@ const Header = () => {
                     }}
                   >
                     Logout
-                  </Button>
-                )}
-                {userName && (
-                  <p className="user-name">
-                    <strong>Hello, {userName}!</strong>
-                  </p>
+                  </button>
                 )}
               </Nav>
             </Navbar.Collapse>
             <Search />
+            {userName && (
+              <p className="user-name ps-2">
+                <strong>Hello, {userName}!</strong>
+              </p>
+            )}
           </Container>
         </Navbar>
       </Row>

@@ -2,12 +2,13 @@ import { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, registerWithEmailAndPassword } from "../auth/firebase";
 import { useNavigate } from "react-router-dom";
+import { Button, Container } from "react-bootstrap";
 
 const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [user, loading /* , error */] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth);
 
   const navigate = useNavigate();
 
@@ -23,28 +24,39 @@ const Register = () => {
   }, [user, loading, navigate]);
 
   return (
-    <div className="register">
+    <Container className="register p-5">
       <h2>Register</h2>
-      <input
-        type="text"
-        placeholder="Full Name"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      />
-      <input
-        type="email"
-        placeholder="Email Address"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button onClick={register}>Register</button>
-    </div>
+      <div className="row my-5">
+        <div className="col-lg-6">
+          <div className="input-group">
+            <input
+              className="form-control"
+              type="text"
+              placeholder="Full Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+            <input
+              className="form-control"
+              type="email"
+              placeholder="Email Address"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <input
+              className="form-control"
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+        </div>
+      </div>
+      <button className="btn btn-outline-dark m-1" onClick={register}>
+        Register
+      </button>
+    </Container>
   );
 };
 

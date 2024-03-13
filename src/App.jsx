@@ -21,10 +21,10 @@ import ProtectedRoute from "./auth/ProtectedRoute";
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#3f51b5",
+      main: "#e1ceff",
     },
     secondary: {
-      main: "#f50057",
+      main: "#284b63",
     },
   },
 });
